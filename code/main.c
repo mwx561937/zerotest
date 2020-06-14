@@ -2,8 +2,8 @@
 #include <pthread.h>
 #include <unistd.h>
 
-#define MAX_INDEX 1000000
-#define THREAD_NUM 10
+#define MAX_INDEX 10000
+#define THREAD_NUM 2
 
 void* thread_proc(void* param){
   int* index = (int*)param;
@@ -11,7 +11,7 @@ void* thread_proc(void* param){
     //printf("hello - %d\n",index);
 
     (*index)++;
-    usleep(5);
+    usleep(1);
   }
   printf("thread %lu is over!\n",pthread_self());
   return NULL;
@@ -27,7 +27,7 @@ int main(){
   for(int i=0;i<MAX_INDEX;++i){
     //printf("world - %d\n",index);
     index++;
-    usleep(5);
+    usleep(1);
   }
   puts("main thread is over!");
   for(int i=0;i<THREAD_NUM;++i){
